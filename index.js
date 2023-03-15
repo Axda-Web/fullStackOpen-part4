@@ -1,8 +1,8 @@
-const http = require('http')
 const express = require('express')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+mongoose.set('strictQuery', false)
 
 const blogSchema = new mongoose.Schema({
   title: String,
@@ -11,9 +11,17 @@ const blogSchema = new mongoose.Schema({
   likes: Number
 })
 
+blogSchema.set('toJSON', {
+  transform: (document, returnedObject) => {
+    returnedObject.id = returnedObject._id.toString()
+    delete returnedObject._id
+    delete returnedObject.__v
+  }
+})
+
 const Blog = mongoose.model('Blog', blogSchema)
 
-const mongoUrl = 'mongodb://localhost/bloglist'
+const mongoUrl = 'mongodb+srv://Axda:Axda@fullstackopen.r2suamr.mongodb.net/blogApp?retryWrites=true&w=majority'
 mongoose.connect(mongoUrl)
 
 app.use(cors())
