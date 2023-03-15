@@ -1,0 +1,19 @@
+{
+  "name": "blog-list-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Axda-Web/fullStackOpen-part4.git"
+  },
+  "author": "Axda",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Axda-Web/fullStackOpen-part4/issues"
+  },
+  "homepage": "https://github.com/Axda-Web/fullStackOpen-part4#readme"
+}
