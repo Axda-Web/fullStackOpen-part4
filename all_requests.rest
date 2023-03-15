@@ -1,0 +1,14 @@
+# Get all blog articles
+GET http://localhost:3001/api/blogs
+###
+
+# Create new article
+POST http://localhost:3001/api/blogs
+Content-Type: application/json
+
+{
+    "title": "String",
+    "author": "String",
+    "url": "String",
+    "likes": 0
+}
