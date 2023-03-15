@@ -7,8 +7,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "The best programming language",
+    "title": "Master Regex",
     "author": "Axda",
-    "url": "http://localhost:3003/api/blogs/1",
+    "url": "http://localhost:3003/api/blogs/3",
     "likes": 0
 }
