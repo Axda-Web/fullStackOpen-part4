@@ -1,14 +1,14 @@
 # Get all blog articles
-GET http://localhost:3001/api/blogs
+GET http://localhost:3003/api/blogs
 ###
 
 # Create new article
-POST http://localhost:3001/api/blogs
+POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "String",
-    "author": "String",
-    "url": "String",
+    "title": "The best programming language",
+    "author": "Axda",
+    "url": "http://localhost:3003/api/blogs/1",
     "likes": 0
 }
