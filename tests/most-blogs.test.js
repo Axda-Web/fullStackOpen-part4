@@ -1,13 +1,12 @@
 const listHelper = require('../utils/list_helper')
 
-describe('Favorite blog', () => {
-
+describe('Most blogs', () => {
   test('When there is no blog, it returns a string indicating that there is no blog yet', () => {
 
     const blogs = []
 
     const expectedValue = 'There is no blog yet'
-    const actualValue = listHelper.favoriteBlog(blogs)
+    const actualValue = listHelper.mostBlogs(blogs)
 
     expect(actualValue).toBe(expectedValue)
   })
@@ -23,16 +22,15 @@ describe('Favorite blog', () => {
     }]
 
     const expectedValue = {
-      title: 'The best programming language',
       author: 'Axda',
-      likes: 13
+      blogs: 1
     }
-    const actualValue = listHelper.favoriteBlog(blogs)
+    const actualValue = listHelper.mostBlogs(blogs)
 
     expect(actualValue).toEqual(expectedValue)
   })
 
-  test('When there is multiple blog, it returns the values of the blog with the most likes', () => {
+  test('When there is multiple blog, it returns an object containing the author name + the total number of articles he wrote', () => {
 
     const blogs = [{
       id: '6411842ccf87d385d5125a52',
@@ -55,11 +53,10 @@ describe('Favorite blog', () => {
     }]
 
     const expectedValue = {
-      title: 'How to become FE Developer',
       author: 'Axda',
-      likes: 77
+      blogs: 3
     }
-    const actualValue = listHelper.favoriteBlog(blogs)
+    const actualValue = listHelper.mostBlogs(blogs)
 
     expect(actualValue).toEqual(expectedValue)
   })
