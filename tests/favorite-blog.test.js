@@ -12,7 +12,7 @@ describe('Favorite blog', () => {
     expect(actualValue).toBe(expectedValue)
   })
 
-  test('When there is only one blog, it returns that blog values', () => {
+  test('When there is only one blog, it returns an object containing the title, author name and number of likes for that blog', () => {
 
     const blogs = [{
       id: '6411842ccf87d385d5125a52',
@@ -32,7 +32,7 @@ describe('Favorite blog', () => {
     expect(actualValue).toEqual(expectedValue)
   })
 
-  test('When there is multiple blog, it returns the values of the blog with the most likes', () => {
+  test('When there is multiple blog, it returns an object containing the title, author name and number of likes for the blog with the top number of likes', () => {
 
     const blogs = [{
       id: '6411842ccf87d385d5125a52',

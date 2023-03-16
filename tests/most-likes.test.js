@@ -1,17 +1,17 @@
 const listHelper = require('../utils/list_helper')
 
-describe('Most blogs', () => {
+describe('Most likes', () => {
   test('When there is no blog, it returns a string indicating that there is no blog yet', () => {
 
     const blogs = []
 
     const expectedValue = 'There is no blog yet'
-    const actualValue = listHelper.mostBlogs(blogs)
+    const actualValue = listHelper.mostLikes(blogs)
 
     expect(actualValue).toBe(expectedValue)
   })
 
-  test('When there is only one blog, it returns an object containing the author name + the total number of articles he wrote', () => {
+  test('When there is only one blog, it returns an object containing the author name + the total number of likes he got', () => {
 
     const blogs = [{
       id: '6411842ccf87d385d5125a52',
@@ -23,19 +23,19 @@ describe('Most blogs', () => {
 
     const expectedValue = {
       author: 'Axda',
-      blogs: 1
+      likes: 13
     }
-    const actualValue = listHelper.mostBlogs(blogs)
+    const actualValue = listHelper.mostLikes(blogs)
 
     expect(actualValue).toEqual(expectedValue)
   })
 
-  test('When there is multiple blog, it returns an object containing the author name + the total number of articles that the top writer author wrote', () => {
+  test('When there is multiple blog, it returns an object containing the author name + the total number of likes for the top liked author', () => {
 
     const blogs = [{
       id: '6411842ccf87d385d5125a52',
       title: 'The best programming language',
-      author: 'Axda',
+      author: 'Tibo',
       url: 'http://localhost:3003/api/blogs/1',
       likes: 13
     }, {
@@ -47,16 +47,16 @@ describe('Most blogs', () => {
     }, {
       id: '6412204a22b5a450c7b30756',
       title: 'Master Rege',
-      author: 'Axda',
+      author: 'Tibo',
       url: 'http://localhost:3003/api/blogs/3',
       likes: 6
     }]
 
     const expectedValue = {
       author: 'Axda',
-      blogs: 3
+      likes: 77
     }
-    const actualValue = listHelper.mostBlogs(blogs)
+    const actualValue = listHelper.mostLikes(blogs)
 
     expect(actualValue).toEqual(expectedValue)
   })
