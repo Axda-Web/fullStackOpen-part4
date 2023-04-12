@@ -7,8 +7,8 @@ POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
 {
-    "title": "Master Regex",
+    "title": "JS Promises masterclass",
     "author": "Axda",
-    "url": "http://localhost:3003/api/blogs/3",
+    "url": "http://localhost:3003/api/blogs/4",
     "likes": 0
 }
