@@ -34,6 +34,29 @@ test('unique blog identifier is named id', async () => {
   response?.body?.forEach( blog => expect(blog._id).toBeUndefined())
 })
 
+test('a new blog can be added', async () => {
+  const NewBlog = {
+    title: 'Figma for Developers',
+    author: 'Axda',
+    url: 'http://localhost:3003/api/blogs/4',
+    likes: 22
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(NewBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const response = await api.get('/api/blogs')
+
+  const titles = response.body.map(blog => blog.title)
+
+  expect(response.body).toHaveLength(helper.initialBlogs.length + 1)
+  expect(titles).toContain('Figma for Developers')
+})
+
+
 afterAll(async () => {
   await mongoose.connection.close()
 })
