@@ -56,6 +56,24 @@ test('a new blog can be added', async () => {
   expect(titles).toContain('Figma for Developers')
 })
 
+test('blog without likes property default to zero', async () => {
+  const NewBlog = {
+    title: 'Figma for Developers',
+    author: 'Axda',
+    url: 'http://localhost:3003/api/blogs/4'
+  }
+
+  await api
+    .post('/api/blogs')
+    .send(NewBlog)
+    .expect(201)
+    .expect('Content-Type', /application\/json/)
+
+  const response = await api.get('/api/blogs')
+
+  expect(response.body[response.body.length -1].likes).toBe(0)
+})
+
 
 afterAll(async () => {
   await mongoose.connection.close()
