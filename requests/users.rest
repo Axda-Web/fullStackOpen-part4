@@ -7,8 +7,8 @@ POST http://localhost:3003/api/users
 Content-Type: application/json
 
 {
-    "username": "axda@gmail.com",
-    "name": "Axda",
-    "password": "axda"
+    "username": "max",
+    "name": "max",
+    "password": "max"
 }
 ###
