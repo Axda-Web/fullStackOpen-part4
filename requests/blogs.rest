@@ -10,5 +10,6 @@ Content-Type: application/json
     "title": "JS Promises masterclass",
     "author": "Axda",
     "url": "http://localhost:3003/api/blogs/4",
-    "likes": 0
+    "likes": 0,
+    "userId": "64492e9af3c4793603540c8d"
 }
