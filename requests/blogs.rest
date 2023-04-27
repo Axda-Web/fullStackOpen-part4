@@ -8,8 +8,8 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF4ZGEiLCJpZCI6IjY0NDkyZTlhZjNjNDc5MzYwMzU0MGM4ZCIsImlhdCI6MTY4MjU4NDk4MX0.R0w7TZwrUII3E2Q7ZcndmWUF76uOt4bN3kaKm63KJsA
 
 {
-    "title": "JS Promises masterclass",
+    "title": "What is the Jamstack?",
     "author": "Axda",
-    "url": "http://localhost:3003/api/blogs/4",
+    "url": "http://localhost:3003/api/blogs/5",
     "likes": 0
 }
