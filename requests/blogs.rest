@@ -13,3 +13,14 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF4Z
     "url": "http://localhost:3003/api/blogs/5",
     "likes": 0
 }
+### 
+
+# Delete blog article Axda
+DELETE http://localhost:3003/api/blogs/644c063d9a98bbd4ac595e73
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImF4ZGEiLCJpZCI6IjY0NDkyZTlhZjNjNDc5MzYwMzU0MGM4ZCIsImlhdCI6MTY4MjU4NDk4MX0.R0w7TZwrUII3E2Q7ZcndmWUF76uOt4bN3kaKm63KJsA
+###
+
+# Delete blog article Oly
+DELETE http://localhost:3003/api/blogs/644c063d9a98bbd4ac595e73
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im9seSIsImlkIjoiNjQ0YzA4YzI0NmJlNGQwMWE2NDI4YTMxIiwiaWF0IjoxNjgyNzA0NTg2fQ.2HozZeWSc9WZSDhS9XsB5NsT447mMzpczpIrqpKuMmo
+###
