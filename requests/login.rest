@@ -1,9 +1,19 @@
-# Create a new token
+# Create a new token for Axda
 POST http://localhost:3003/api/login
 Content-Type: application/json
 
 {
     "username": "axda",
     "password": "axda"
+}
+###
+
+# Create a new token for Oly
+POST http://localhost:3003/api/login
+Content-Type: application/json
+
+{
+    "username": "oly",
+    "password": "oly"
 }
 ###
