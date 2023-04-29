@@ -1,7 +1,5 @@
 const blogsRouter = require('express').Router()
 const Blog = require('../models/blog')
-const User = require('../models/user')
-const jwt = require('jsonwebtoken')
 
 blogsRouter.get('/', async (request, response) => {
   const blogs = await Blog.find({}).populate('user', { username: 1, name: 1 })
@@ -14,14 +12,7 @@ blogsRouter.post('/', async (request, response) => {
     return response.status(400).json({ error: 'Invalid request data', message: 'Missing blog title or url' })
   }
 
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
-  const user = await User.findById(decodedToken.id)
-
+  const user = request.user
   const blog = new Blog({ likes: 0, ...request.body, user: user.id })
 
   const savedBlog = await blog.save()
@@ -32,18 +23,12 @@ blogsRouter.post('/', async (request, response) => {
 })
 
 blogsRouter.delete('/:id', async (request, response) => {
-  const decodedToken = jwt.verify(request.token, process.env.SECRET)
-
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token invalid' })
-  }
-
-  const userLoggedIn = await User.findById(decodedToken.id)
+  const user = request.user
   const blogToDelete = await Blog.findById(request.params.id)
 
-  if (userLoggedIn._id.toString() === blogToDelete.user.toString()) {
+  if (user._id.toString() === blogToDelete.user.toString()) {
     const removedBlog = await Blog.findByIdAndRemove(request.params.id)
-    userLoggedIn.blogs = userLoggedIn.blogs.filter(blog => blog.id !== removedBlog._id)
+    user.blogs = user.blogs.filter(blog => blog.id !== removedBlog._id)
     response.status(204).end()
   } else {
     return response.status(401).json({ error: 'Not allowed', message: 'You are not authorized to delete this item' })
@@ -52,6 +37,8 @@ blogsRouter.delete('/:id', async (request, response) => {
 
 blogsRouter.put('/:id', async (request, response) => {
   const body = request.body
+  const user = request.user
+  const blogToUpdate = await Blog.findById(request.params.id)
 
   const blog = {
     title: body.title,
@@ -60,8 +47,12 @@ blogsRouter.put('/:id', async (request, response) => {
     likes: body.likes || 0
   }
 
-  const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
-  response.json(updatedBlog)
+  if (user._id.toString() === blogToUpdate.user.toString()) {
+    const updatedBlog = await Blog.findByIdAndUpdate(request.params.id, blog, { new: true })
+    response.json(updatedBlog)
+  } else {
+    return response.status(401).json({ error: 'Not allowed', message: 'You are not authorized to update this item' })
+  }
 })
 
 module.exports = blogsRouter
